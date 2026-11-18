@@ -68,7 +68,6 @@ export function createMcpServer() {
 export async function handleMcpRequest(req: import("express").Request, res: import("express").Response) {
   const server = createMcpServer();
   const transport = new StreamableHTTPServerTransport({
-    sessionIdGenerator: undefined,
     enableJsonResponse: true
   });
   res.on("close", () => { void transport.close(); void server.close(); });
